@@ -10,6 +10,7 @@
   "scripts": {
     "dev:stack": "docker-compose --env-file ./.env -f infra/docker-compose.yml up -d postgres redis minio mailhog",
     "stop:stack": "docker-compose --env-file ./.env -f infra/docker-compose.yml down",
+    "dev:stack:reset": "docker-compose --env-file ./.env -f infra/docker-compose.yml down -v",
     "dev": "turbo run dev",
     "dev:api": "yarn workspace api dev",
     "dev:web": "yarn workspace web dev",

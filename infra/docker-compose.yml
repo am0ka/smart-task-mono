@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: smart-task-postgres
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - smart-task-net
+
+  redis:
+    image: redis:7
+    container_name: smart-task-redis
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - smart-task-net
+
+  minio:
+    image: minio/minio:latest
+    container_name: smart-task-minio
+    ports:
+      - "${MINIO_PORT}:9000"
+      - "${MINIO_CONSOLE_PORT}:9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - smart-task-net
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: smart-task-mailhog
+    ports:
+      - "1025:1025" # SMTP
+      - "8025:8025"   # Web UI
+    networks:
+      - smart-task-net
+
+  # Application services (placeholders for local development)
+  # api:
+  #   build:
+  #     context: ../
+  #     dockerfile: apps/api/Dockerfile
+  #   depends_on:
+  #     - postgres
+  #     - redis
+  #   ports:
+  #     - "${API_PORT}:${API_PORT}"
+  #   env_file:
+  #     - ../apps/api/.env
+  #   networks:
+  #     - smart-task-net
+
+  # web:
+  #   build:
+  #     context: ../
+  #     dockerfile: apps/web/Dockerfile
+  #   ports:
+  #     - "3000:3000"
+  #   env_file:
+  #     - ../apps/web/.env
+  #   networks:
+  #     - smart-task-net
+
+networks:
+  smart-task-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  minio_data:

@@ -3,21 +3,24 @@
   "version": "1.0.0",
   "private": true,
   "description": "Smart Task Management System for Distributed Teams",
-  "packageManager": "pnpm@8.6.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev:stack": "docker-compose -f infra/docker-compose.yml up -d postgres redis minio mailhog",
     "stop:stack": "docker-compose -f infra/docker-compose.yml down",
     "dev": "turbo run dev",
-    "dev:api": "pnpm --filter api dev",
-    "dev:web": "pnpm --filter web dev",
-    "dev:mobile": "pnpm --filter mobile dev",
+    "dev:api": "yarn workspace api dev",
+    "dev:web": "yarn workspace web dev",
+    "dev:mobile": "yarn workspace mobile dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
-    "db:migrate": "pnpm --filter api db:migrate",
-    "db:seed": "pnpm --filter api db:seed",
-    "generate:sdk": "pnpm --filter api generate:sdk"
+    "db:migrate": "yarn workspace api db:migrate",
+    "db:seed": "yarn workspace api db:seed",
+    "generate:sdk": "yarn workspace api generate:sdk"
   },
   "devDependencies": {
     "turbo": "^1.10.12"

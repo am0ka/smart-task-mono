@@ -4,7 +4,7 @@ MVP for a Smart Task Management System for Distributed Teams.
 
 ## Tech Stack
 
-- **Monorepo:** pnpm workspaces, Turborepo
+- **Monorepo:** Yarn Workspaces, Turborepo
 - **Backend:** NestJS, TypeORM, PostgreSQL, Redis (BullMQ), Socket.IO
 - **Frontend:** Next.js (App Router), TypeScript, Tailwind CSS, React Query
 - **Mobile:** React Native (Expo)
@@ -13,7 +13,7 @@ MVP for a Smart Task Management System for Distributed Teams.
 ## Prerequisites
 
 - Node.js (v18+)
-- pnpm (v8+)
+- Yarn (v4+)
 - Docker & Docker Compose
 
 ## Getting Started
@@ -39,7 +39,7 @@ MVP for a Smart Task Management System for Distributed Teams.
 3.  **Install dependencies:**
 
     ```bash
-    pnpm install
+    yarn install
     ```
 
 4.  **Start the development stack:**
@@ -47,7 +47,7 @@ MVP for a Smart Task Management System for Distributed Teams.
     This command will start PostgreSQL, Redis, MinIO, and Mailhog in Docker containers.
 
     ```bash
-    pnpm dev:stack
+    yarn dev:stack
     ```
 
 5.  **Run database migrations:**
@@ -55,7 +55,7 @@ MVP for a Smart Task Management System for Distributed Teams.
     (This needs to be implemented in the `api` package)
 
     ```bash
-    pnpm db:migrate
+    yarn db:migrate
     ```
 
 6.  **Seed the database:**
@@ -63,7 +63,7 @@ MVP for a Smart Task Management System for Distributed Teams.
     (This needs to be implemented in the `api` package)
 
     ```bash
-    pnpm db:seed
+    yarn db:seed
     ```
 
 7.  **Run the applications:**
@@ -72,27 +72,27 @@ MVP for a Smart Task Management System for Distributed Teams.
 
     ```bash
     # Run the API (NestJS)
-    pnpm dev:api
+    yarn dev:api
 
     # Run the Web App (Next.js)
-    pnpm dev:web
+    yarn dev:web
 
     # Run the Mobile App (Expo)
-    pnpm dev:mobile
+    yarn dev:mobile
     ```
 
     Alternatively, run all apps concurrently using Turborepo:
     ```bash
-    pnpm dev
+    yarn dev
     ```
 
 ## Available Scripts
 
-- `pnpm dev:stack` - Start required Docker services.
-- `pnpm stop:stack` - Stop Docker services.
-- `pnpm dev` - Run all apps in development mode.
-- `pnpm build` - Build all apps.
-- `pnpm lint` - Lint all apps and packages.
-- `pnpm test` - Run tests for all apps.
-- `pnpm typecheck` - Run type checking across the monorepo.
-- `pnpm generate:sdk` - Generate the API client from the backend's OpenAPI spec.
+- `yarn dev:stack` - Start required Docker services.
+- `yarn stop:stack` - Stop Docker services.
+- `yarn dev` - Run all apps in development mode.
+- `yarn build` - Build all apps.
+- `yarn lint` - Lint all apps and packages.
+- `yarn test` - Run tests for all apps.
+- `yarn typecheck` - Run type checking across the monorepo.
+- `yarn generate:sdk` - Generate the API client from the backend's OpenAPI spec.

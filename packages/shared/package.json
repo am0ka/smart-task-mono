@@ -1,0 +1,13 @@
+{
+  "name": "@smart-task/shared",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}

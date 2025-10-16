@@ -12,5 +12,8 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-turbo": "^1.10.12"
+  },
+  "dependencies": {
+    "@rushstack/eslint-patch": "^1.14.0"
   }
 }

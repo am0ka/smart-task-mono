@@ -22,20 +22,29 @@ jobs:
           node-version: 18
           cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn install --immutable
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
 
       - name: Lint
-        run: yarn lint
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: lint
 
       - name: Typecheck
-        run: yarn typecheck
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: typecheck
 
       - name: Test
-        run: yarn test
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: test
 
-      - name: Build
-        run: yarn build
+      - uses: borales/actions-yarn@v4
+        with:
+          cmd: build
 
       # Placeholder for Docker builds
       # - name: Build Docker Images

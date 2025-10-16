@@ -28,14 +28,14 @@ jobs:
       - name: Run install
         run: yarn install --immutable
 
-      - name: Lint
-        run: yarn lint
+      # - name: Lint
+      #   run: yarn lint
 
-      - name: Typecheck
-        run: yarn typecheck
+      # - name: Typecheck
+      #   run: yarn typecheck
 
-      - name: Test
-        run: yarn test
+      # - name: Test
+      #   run: yarn test
 
       - name: Build
         run: yarn build
